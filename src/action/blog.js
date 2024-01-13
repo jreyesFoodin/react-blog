@@ -30,9 +30,9 @@ export const useBlog = () => {
       return error
     }
   }
-  const UpdateBlogAction = async (body, id) => {
+  const UpdateBlogAction = async (body) => {
     try {
-      const headers = { id }
+      const headers = { id: body.idBlog }
       const response = await api.put('Blog/updateBlog', body, null, headers)
       return response
     } catch (error) {
@@ -40,10 +40,21 @@ export const useBlog = () => {
       return error
     }
   }
+  const RemoverBlogAction = async (id) => {
+    try {
+      const headers = { id }
+      const response = await api.put('Blog/removerBlog', null, null, headers)
+      return response
+    } catch (error) {
+      console.log('Error RemoverBlogAction', error.data.response)
+      return error
+    }
+  }
   return {
     AllListBlogAction,
     listBlogByIdAction,
     CreatedBlogAction,
-    UpdateBlogAction
+    UpdateBlogAction,
+    RemoverBlogAction
   }
 }
