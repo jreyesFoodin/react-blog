@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
-const baseUrl = process.env.REACT_APP_API_URL
+const baseUrl = import.meta.env.VITE_APP_API_URL
 // Constantes de códigos de estado de error
 const ERROR_STATUS = {
   BAD_REQUEST: 400,
@@ -27,7 +27,7 @@ const useApi = () => {
       response = { ...response.data, success: true }
       setData(response.data)
       setLoading(false)
-      setErrorHandle(null) // Limpiar el estado de error en caso de éxito
+      setErrorHandle(null)
       return response
     } catch (error) {
       if (error.response) {
