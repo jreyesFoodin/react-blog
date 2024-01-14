@@ -1,13 +1,13 @@
 
 # Prueba técnica de React
 
-**Que contiene**
+### Que contiene
 
-### Alta de entradas
-### Búsquedas
-### Mostrar detalle de una entrada
-### Obtener de recursos
-### Modo Offline
+**Alta de entradas**
+**Búsquedas**
+**Mostrar detalle de una entrada**
+**Obtener de recursos**
+**Modo Offline**
 
 ## Tech Stack
 
