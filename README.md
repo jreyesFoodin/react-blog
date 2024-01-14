@@ -1,8 +1,13 @@
 
-# Prueba tecnica de React
+# Prueba técnica de React
 
-Aplicacion de blog se crea nuevo blog, se actualiza y se elimina
+**Que contiene**
 
+### Alta de entradas
+### Búsquedas
+### Mostrar detalle de una entrada
+### Obtener de recursos
+### Modo Offline
 
 ## Tech Stack
 
@@ -15,11 +20,11 @@ Aplicacion de blog se crea nuevo blog, se actualiza y se elimina
 Instalar mi proyecto con npm
 
 ```bash
-    cd my-project
+    cd react-blog
     npm install
     npm run dev
 ```
-    
+
 ## Variables de entorno
 
 Para ejecutar este proyecto, deberá agregar las siguientes variables de entorno a su archivo .env
