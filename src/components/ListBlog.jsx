@@ -1,6 +1,7 @@
 import { Card, Button, Col, Stack } from 'react-bootstrap'
 import moment from 'moment-timezone'
-
+import 'moment/locale/es'
+moment.locale('es')
 const ListBlog = ({ item, handleEditForm, handledButtonRemove }) => {
   return (
     <>
@@ -13,8 +14,15 @@ const ListBlog = ({ item, handleEditForm, handledButtonRemove }) => {
             <Card.Text style={{ overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitBoxOrient: 'vertical', WebkitLineClamp: 1 }}>
               {item.content}
             </Card.Text>
-            <Card.Text>Creador: {item.author}</Card.Text>
-            <Card.Text>Fecha de creación: {moment(item.publicationDate).format('DD MMMM YY')}</Card.Text>
+            <div className='d-flex justify-content-between'>
+              <div>
+                <Card.Text>Creador: {item.author}</Card.Text>
+              </div>
+              <div>
+                <Card.Text>{moment(item.publicationDate).format('DD MMMM YY')}</Card.Text>
+              </div>
+            </div>
+            <br />
             <Stack gap={2} className='col-md-12 mx-auto'>
               <Button variant='outline-success' onClick={() => handleEditForm(item)}>Editar</Button>
               <Button variant='outline-danger' onClick={() => handledButtonRemove(item)}>Remover</Button>
