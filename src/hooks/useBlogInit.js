@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import { useBlog } from '../action/blog'
+import { useLocalStorage } from '../hooks/useLocalStorage'
 import Swal from 'sweetalert2'
+
 export const useBlogInit = () => {
   const { AllListBlogAction, CreatedBlogAction, UpdateBlogAction, RemoverBlogAction } = useBlog()
-  const [data, setData] = useState([])
+  const [data, setData] = useLocalStorage('data', [])
   const [show, setShow] = useState(false)
   const [status, setStatus] = useState('add')
   const [loading, setLoading] = useState(false)
@@ -11,14 +13,18 @@ export const useBlogInit = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [showView, setShowView] = useState(false)
   const [infoView, setInfoView] = useState({})
+  const [isNetwork, setIsNetwork] = useState(false)
   useEffect(() => {
     initBlog()
   }, [])
   const initBlog = async () => {
     setLoading(true)
+    setIsNetwork(false)
     const response = await AllListBlogAction()
     if (response.success) {
       setData(response.payload)
+    } else {
+      setIsNetwork(true)
     }
     setLoading(false)
   }
@@ -117,6 +123,7 @@ export const useBlogInit = () => {
     searchTerm,
     showView,
     infoView,
+    isNetwork,
     handleClickButton,
     handleActionForm,
     handleClose,

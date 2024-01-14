@@ -2,7 +2,7 @@ import { Card, Button, Col, Stack } from 'react-bootstrap'
 import { formatDate } from '../util'
 import { placeholderImage } from '../constants'
 
-const ListBlog = ({ item, handleEditForm, handledButtonRemove, openModalView }) => {
+const ListBlog = ({ item, handleEditForm, handledButtonRemove, openModalView, isNetwork }) => {
   return (
     <>
       <Col>
@@ -24,12 +24,13 @@ const ListBlog = ({ item, handleEditForm, handledButtonRemove, openModalView }) 
             </div>
             <br />
           </Card.Body>
-          <Card.Footer>
-            <Stack gap={2} className='col-md-12 mx-auto'>
-              <Button variant='outline-success' onClick={() => handleEditForm(item)}>Editar</Button>
-              <Button variant='outline-danger' onClick={() => handledButtonRemove(item)}>Remover</Button>
-            </Stack>
-          </Card.Footer>
+          {!isNetwork &&
+            <Card.Footer>
+              <Stack gap={2} className='col-md-12 mx-auto'>
+                <Button variant='outline-success' onClick={() => handleEditForm(item)}>Editar</Button>
+                <Button variant='outline-danger' onClick={() => handledButtonRemove(item)}>Remover</Button>
+              </Stack>
+            </Card.Footer>}
         </Card>
       </Col>
     </>

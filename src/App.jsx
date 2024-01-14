@@ -4,7 +4,7 @@ import ListBlog from './components/ListBlog'
 import ModalForm from './components/ModalForm'
 import Header from './components/Header'
 import Loading from './components/Loading'
-import NotFound from './components/NotFound'
+import AlertCustoms from './components/AlertCustoms'
 import ModalView from './components/ModalView'
 
 const App = () => {
@@ -17,6 +17,7 @@ const App = () => {
     searchTerm,
     showView,
     infoView,
+    isNetwork,
     handleClickButton,
     handleActionForm,
     handleClose,
@@ -46,7 +47,8 @@ const App = () => {
         info={info}
       />
       <br />
-      <Header handleClickButton={handleClickButton} searchTerm={searchTerm} handleSearch={handleSearch} />
+      <Header handleClickButton={handleClickButton} searchTerm={searchTerm} handleSearch={handleSearch} isNetwork={isNetwork} />
+      {isNetwork && <AlertCustoms title='No hay conexión a internet' variant='danger' />}
       {loading
         ? <Loading />
         : (
@@ -63,6 +65,7 @@ const App = () => {
                             handleEditForm={handleEditForm}
                             handledButtonRemove={handledButtonRemove}
                             openModalView={openModalView}
+                            isNetwork={isNetwork}
                           />
                         </div>
                       )
@@ -70,7 +73,12 @@ const App = () => {
                   </Row>
                 </>
                 )
-              : <NotFound searchTerm={searchTerm} />}
+              : <AlertCustoms
+                  searchTerm={searchTerm}
+                  title='No hay Blog registrados'
+                  variant='warning'
+                  titleSearch={`No hay coincidencias con ${searchTerm}`}
+                />}
           </>
           )}
     </Container>
