@@ -5,6 +5,7 @@ import ModalForm from './components/ModalForm'
 import Header from './components/Header'
 import Loading from './components/Loading'
 import NotFound from './components/NotFound'
+import ModalView from './components/ModalView'
 
 const App = () => {
   const {
@@ -14,12 +15,16 @@ const App = () => {
     info,
     show,
     searchTerm,
+    showView,
+    infoView,
     handleClickButton,
     handleActionForm,
     handleClose,
     handleEditForm,
     handledButtonRemove,
-    handleSearch
+    handleSearch,
+    handleCloseView,
+    openModalView
   } = useBlogInit()
   return (
     <Container>
@@ -28,6 +33,11 @@ const App = () => {
           <Navbar.Brand href='#'>Prueba Blog</Navbar.Brand>
         </Container>
       </Navbar>
+      <ModalView
+        blogData={infoView}
+        show={showView}
+        handleClose={handleCloseView}
+      />
       <ModalForm
         show={show}
         handleActionForm={handleActionForm}
@@ -48,7 +58,12 @@ const App = () => {
                     {filteredData.map((item, key) => {
                       return (
                         <div key={key}>
-                          <ListBlog item={item} handleEditForm={handleEditForm} handledButtonRemove={handledButtonRemove} />
+                          <ListBlog
+                            item={item}
+                            handleEditForm={handleEditForm}
+                            handledButtonRemove={handledButtonRemove}
+                            openModalView={openModalView}
+                          />
                         </div>
                       )
                     })}

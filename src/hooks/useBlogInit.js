@@ -9,6 +9,8 @@ export const useBlogInit = () => {
   const [loading, setLoading] = useState(false)
   const [info, setInfo] = useState({})
   const [searchTerm, setSearchTerm] = useState('')
+  const [showView, setShowView] = useState(false)
+  const [infoView, setInfoView] = useState({})
   useEffect(() => {
     initBlog()
   }, [])
@@ -98,6 +100,14 @@ export const useBlogInit = () => {
       blog.content.toLowerCase().includes(searchTermLower)
     )
   })
+  const handleCloseView = () => {
+    setShowView(false)
+    setInfoView({})
+  }
+  const openModalView = (obj) => {
+    setShowView(true)
+    setInfoView(obj)
+  }
   return {
     filteredData,
     status,
@@ -105,11 +115,15 @@ export const useBlogInit = () => {
     info,
     show,
     searchTerm,
+    showView,
+    infoView,
     handleClickButton,
     handleActionForm,
     handleClose,
     handleEditForm,
     handledButtonRemove,
-    handleSearch
+    handleSearch,
+    handleCloseView,
+    openModalView
   }
 }
