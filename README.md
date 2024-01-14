@@ -1,7 +1,7 @@
 
 # Prueba técnica de React
 
-## Que contiene
+## ¿Qué contiene?
 
 - Alta de entradas
 - Búsquedas
